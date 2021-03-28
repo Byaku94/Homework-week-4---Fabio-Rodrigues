@@ -1,0 +1,15 @@
+
+html,body{
+    font-family: 'Roboto', sans-serif;
+    height:100%;
+  }
+   
+  button{
+    background-color:#ffc400;
+    color:white;
+    border: none;
+    padding:5px;
+    border-radius: 5px;
+    cursor:pointer;
+  }
+ 
