@@ -26,7 +26,7 @@ var questions = [
     },
     
     function startQuiz() {
-      let hide = document.getElementsByClassName("quizDisplay");
+      var hide = document.getElementsByClassName("quizDisplay");
       if (hide.style.display === "flex") {
       hide.style.display = "none";
       } else {
