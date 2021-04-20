@@ -25,3 +25,11 @@ var questions = [
       answer: "January 1"
     },
     
+    function startQuiz() {
+      let hide = document.getElementsByClassName("quizDisplay");
+      if (hide.style.display === "flex") {
+      hide.style.display = "none";
+      } else {
+      hide.style.display = "none";
+      }
+    }
