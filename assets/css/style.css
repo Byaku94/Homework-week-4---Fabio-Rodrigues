@@ -16,7 +16,7 @@ button{
    visibility: hidden;
  }
 
- .quizDisplay{
+ #quizDisplay{
   display: flex;
   flex-direction: column;
   text-align: center;

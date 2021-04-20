@@ -1,3 +1,8 @@
+var time = 75;
+var score = 0;
+var qCount = 0;
+
+
 var questions = [
     {
       title: "Commonly used data types DO NOT include:",
@@ -24,12 +29,29 @@ var questions = [
       choices: ["January 1", "December 31", "June 1", "April 23"],
       answer: "January 1"
     },
-    
+    ]
     function startQuiz() {
-      var hide = document.getElementsByClassName("quizDisplay");
-      if (hide.style.display === "flex") {
-      hide.style.display = "none";
+      var hide = document.getElementById("quizDisplay");
+      if (hide.style.display === "none") {
+        hide.style.display = "block";
       } else {
-      hide.style.display = "none";
+        hide.style.display = "none";
       }
+      setQuestionData()
+      var show = document.getElementsByClassName("hide");
+      show.style.visibility = "visible";
     }
+
+$("#startButton").on("click", startQuiz)
+
+
+
+
+
+function setQuestionData() {
+  document.getElementById('#quizQandA p').innerHTML = questions[qCount].title;
+  document.getElementById('#quizQandA button:nth-of-type(1)').innerHTML = "1. ${questions[qCount].choices[0]}"
+  document.getElementById('#quizQandA button:nth-of-type(2)').innerHTML = "2. ${questions[qCount].choices[1]}"
+  document.getElementById('#quizQandA button:nth-of-type(3)').innerHTML = "3. ${questions[qCount].choices[2]}"
+  document.getElementById('#quizQandA button:nth-of-type(4)').innerHTML = "4. ${questions[qCount].choices[3]}"
+}

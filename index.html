@@ -5,26 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Coding Quiz</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
 </head>
 
 <body>
-  <div class = "quizDisplay">
+  <div id = "quizDisplay">
     <section class = "introduction">
       <h1>Coding Quiz</h1>
       <p>Try to answer the following code-related questions within the time limit.
         Wrong answers will be penalized by cutting time on the clock.
       </p>
-      <button onclick= "startQuiz()"> Start </button>
+      <button id= "startButton"> Start </button>
     </section>
 
 
 
   </div>
 
-  <section class="hide">
-    <p id="title"></p>
-   
+  <section id="quizQandA" class="hide">
+    <p id = title></p>
+
+    
   </section>
 
   <section class="hide">
