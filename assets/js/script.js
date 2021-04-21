@@ -1,9 +1,10 @@
 var time = 75;
 var score = 0;
 var qCount = 0;
+var timeset;
+var answers = document.querySelectorAll('#quizQandA button');
 
-
-var questions = [
+let questions = [
     {
       title: "Commonly used data types DO NOT include:",
       choices: ["strings", "booleans", "alerts", "numbers"],
@@ -30,28 +31,51 @@ var questions = [
       answer: "January 1"
     },
     ]
-    function startQuiz() {
+function startQuiz() {
       var hide = document.getElementById("quizDisplay");
       if (hide.style.display === "none") {
         hide.style.display = "block";
       } else {
         hide.style.display = "none";
       }
-      setQuestionData()
-      var show = document.getElementsByClassName("hide");
+      setQuestionData();
+      var show = document.getElementById("quizQandA");
       show.style.visibility = "visible";
     }
-
+  
 $("#startButton").on("click", startQuiz)
 
 
 
 
 
-function setQuestionData() {
-  document.getElementById('#quizQandA p').innerHTML = questions[qCount].title;
-  document.getElementById('#quizQandA button:nth-of-type(1)').innerHTML = "1. ${questions[qCount].choices[0]}"
-  document.getElementById('#quizQandA button:nth-of-type(2)').innerHTML = "2. ${questions[qCount].choices[1]}"
-  document.getElementById('#quizQandA button:nth-of-type(3)').innerHTML = "3. ${questions[qCount].choices[2]}"
-  document.getElementById('#quizQandA button:nth-of-type(4)').innerHTML = "4. ${questions[qCount].choices[3]}"
+setQuestionData = () => {
+  queryElement('#quizQandA p').innerHTML = questions[qCount].title;
+  queryElement('#quizQandA button:nth-of-type(1)').innerHTML = "1. ${questions[qCount].choices[0]}"
+  queryElement('#quizQandA button:nth-of-type(2)').innerHTML = "2. ${questions[qCount].choices[1]}"
+  queryElement('#quizQandA button:nth-of-type(3)').innerHTML = "3. ${questions[qCount].choices[2]}"
+  queryElement('#quizQandA button:nth-of-type(4)').innerHTML = "4. ${questions[qCount].choices[3]}"
 }
+
+var recordsArray = [];
+// Retrieve data if it exists or keep empty array otherwise.
+(localStorage.getItem('recordsArray')) ? recordsArray = JSON.parse(localStorage.getItem('recordsArray')): recordsArray = [];
+  
+Array.from(answers).forEach(check => {
+  check.addEventListener('click', function (event) {
+    // Handles events if a question is answered correctly
+    if (this.innerHTML.substring(3, this.length) === questions[qCount].answer) {
+      score = score + 1;
+      qCount = qCount + 1;
+      quizUpdate("Correct");
+    }else{
+      // Handles events if a question is answered incorrectly.
+      time = time - 10;
+      qCount = qCount + 1;
+      quizUpdate("Wrong");
+    }
+  });
+});
+
+
+
